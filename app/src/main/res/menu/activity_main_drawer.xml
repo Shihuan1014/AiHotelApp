@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+<!--        <item-->
+<!--            android:id="@+id/nav_home"-->
+<!--            android:icon="@drawable/ic_menu_camera"-->
+<!--            android:title="@string/menu_home" />-->
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="进行人脸注册(测试版)" />
+
+        <item
+            android:id="@+id/face_login"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="登录方案(测试版)" />
+
+        <item
+            android:id="@+id/face_check_in"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="酒店前台入住解决方案" />
+
+        <item
+            android:id="@+id/face_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="人脸注册管理(开发者测试)" />
+<!--        <item-->
+<!--            android:id="@+id/nav_gallery"-->
+<!--            android:icon="@drawable/ic_menu_gallery"-->
+<!--            android:title="@string/menu_gallery" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_slideshow"-->
+<!--            android:icon="@drawable/ic_menu_slideshow"-->
+<!--            android:title="@string/menu_slideshow" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_tools"-->
+<!--            android:icon="@drawable/ic_menu_manage"-->
+<!--            android:title="@string/menu_tools" />-->
+    </group>
+
+<!--    <item android:title="Communicate">-->
+<!--        <menu>-->
+<!--            <item-->
+<!--                android:id="@+id/nav_share"-->
+<!--                android:icon="@drawable/ic_menu_share"-->
+<!--                android:title="@string/menu_share" />-->
+<!--            <item-->
+<!--                android:id="@+id/nav_send"-->
+<!--                android:icon="@drawable/ic_menu_send"-->
+<!--                android:title="@string/menu_send" />-->
+<!--        </menu>-->
+<!--    </item>-->
+
+</menu>

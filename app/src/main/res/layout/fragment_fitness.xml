@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:paddingBottom="15dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingVertical="15dp"
+                android:textColor="@color/colorWhite"
+                >
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="健身总时长(分)"
+                android:textSize="15dp"
+                android:textColor="@color/colorWhite"
+                android:gravity="center"
+                >
+            </TextView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="20dp"
+            >
+
+            <ImageView
+                android:id="@+id/bg"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@color/colorDarkGray"
+                >
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:text="开启专属训练计划"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:textSize="20dp"
+                >
+
+            </TextView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/book_btn"
+                android:textColor="@color/colorWhite"
+                android:text="START">
+
+            </Button>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="我参与的课程"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:padding="10dp"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="查看更多"
+                    android:textSize="12dp"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    >
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:elevation="2dp"
+                android:background="@drawable/course_bg"
+                android:padding="15dp"
+                android:layout_marginHorizontal="2dp"
+                android:layout_marginBottom="2dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:paddingVertical="10dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全身唤醒热身训练"
+                            android:textSize="14dp"
+                            android:paddingVertical="4dp"
+                            >
+
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7节课"
+                            android:textSize="12dp"
+                            >
+
+                        </TextView>
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:text="训练进度"
+                        >
+
+                    </TextView>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="15dp"
+                    android:text="+添加课程"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/border_top_1dp"
+                    >
+
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="训练课程"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingVertical="15dp"
+                >
+
+            </TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                >
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fitness_course"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.hnu.aihotel">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:hardwareAccelerated="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.main.LoginActivity">
+        </activity>
+        <activity android:name=".activity.main.HotelDetailActivity">
+        </activity>
+        <activity android:name=".activity.main.RoomAroundActivity"
+            android:hardwareAccelerated="true"
+            >
+        </activity>
+
+        <activity android:name=".activity.face.ChooseFunctionActivity"></activity>
+        <activity
+            android:name=".activity.face.RegisterAndRecognizeActivity"
+            android:hardwareAccelerated="true"></activity>
+        <activity
+            android:name=".activity.face.SingleImageActivity"
+            android:hardwareAccelerated="true"></activity>
+        <activity
+            android:name=".activity.face.FaceAttrPreviewActivity"
+            android:hardwareAccelerated="true"></activity>
+        <activity
+            android:name=".activity.face.FaceManageActivity"
+            android:hardwareAccelerated="true"></activity>
+        <activity
+            android:name=".activity.face.MultiImageActivity"
+            android:hardwareAccelerated="true"></activity>
+        <activity android:name=".activity.face.IdCardRegisterActivity"></activity>
+    </application>
+
+</manifest>

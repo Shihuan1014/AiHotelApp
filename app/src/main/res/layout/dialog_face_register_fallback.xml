@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:minWidth="260dp"
+    android:paddingTop="20dp"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/success_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/success">
+
+    </ImageView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        android:paddingHorizontal="15dp"
+        android:layout_marginVertical="8dp"
+        android:text="人脸注册成功"
+        >
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/dialog_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:text="刷脸替代密码进行登录、认证"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="12dp"
+        android:textSize="16dp"
+        android:gravity="center"
+        android:text="确定"
+        android:background="@drawable/border_top_1dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#108EE9"
+        >
+
+    </TextView>
+</LinearLayout>
