@@ -1,46 +1,28 @@
 package edu.hnu.aihotel.ui.bookHotel;
 
 public class Hotel {
-    private String coverUrl;
-    private String address;
+
+    private String hotelId;
     private String name;
-    private String hotelUrl;
-    private String minCost;
+    private String address;
+    private String areas;
+    private String cover;
+    private String score;
+    private String hasFood;
+    private String hasFitness;
+    private String hasWifi;
+    private String hasPark;
+    private String price;
+    private String link;
+    private String cityNo;
 
-    public Hotel(){
 
+    public String getHotelId() {
+        return hotelId;
     }
 
-    public Hotel(String coverUrl,String address,String name,String minCost){
-        this.coverUrl = coverUrl;
-        this.address = address;
-        this.name = name;
-        this.minCost = minCost;
-    }
-
-
-    public String getMinCost() {
-        return minCost;
-    }
-
-    public void setMinCost(String minCost) {
-        this.minCost = minCost;
-    }
-
-    public String getCoverUrl() {
-        return coverUrl;
-    }
-
-    public void setCoverUrl(String coverUrl) {
-        this.coverUrl = coverUrl;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setHotelId(String hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getName() {
@@ -51,21 +33,110 @@ public class Hotel {
         this.name = name;
     }
 
-    public String getHotelUrl() {
-        return hotelUrl;
+    public String getAddress() {
+        return address;
     }
 
-    public void setHotelUrl(String hotelUrl) {
-        this.hotelUrl = hotelUrl;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAreas() {
+        return areas;
+    }
+
+    public void setAreas(String areas) {
+        this.areas = areas;
+    }
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public String getHasFood() {
+        return hasFood;
+    }
+
+    public void setHasFood(String hasFood) {
+        this.hasFood = hasFood;
+    }
+
+    public String getHasFitness() {
+        return hasFitness;
+    }
+
+    public void setHasFitness(String hasFitness) {
+        this.hasFitness = hasFitness;
+    }
+
+    public String getHasWifi() {
+        return hasWifi;
+    }
+
+    public void setHasWifi(String hasWifi) {
+        this.hasWifi = hasWifi;
+    }
+
+    public String getHasPark() {
+        return hasPark;
+    }
+
+    public void setHasPark(String hasPark) {
+        this.hasPark = hasPark;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getCityNo() {
+        return cityNo;
+    }
+
+    public void setCityNo(String cityNo) {
+        this.cityNo = cityNo;
     }
 
     @Override
     public String toString() {
         return "Hotel{" +
-                "coverUrl='" + coverUrl + '\'' +
-                ", address='" + address + '\'' +
+                "hotelId='" + hotelId + '\'' +
                 ", name='" + name + '\'' +
-                ", hotelUrl='" + hotelUrl + '\'' +
+                ", address='" + address + '\'' +
+                ", areas='" + areas + '\'' +
+                ", cover='" + cover + '\'' +
+                ", score='" + score + '\'' +
+                ", hasFood='" + hasFood + '\'' +
+                ", hasFitness='" + hasFitness + '\'' +
+                ", hasWifi='" + hasWifi + '\'' +
+                ", hasPark='" + hasPark + '\'' +
+                ", price='" + price + '\'' +
+                ", link='" + link + '\'' +
+                ", cityNo='" + cityNo + '\'' +
                 '}';
     }
 }

@@ -38,6 +38,10 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
         return holder;
     }
 
+    public void initData(List<Hotel> list){
+        hotels = list;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Hotel hotel = hotels.get(position);
@@ -48,13 +52,13 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
                 holder.itemView.getContext().startActivity(intent);
             }
         });
-        Glide.with(holder.itemView.getContext()).load(hotel.getCoverUrl())
+        Glide.with(holder.itemView.getContext()).load(hotel.getCover())
                 .apply(RequestOptions.skipMemoryCacheOf(true).diskCacheStrategy(DiskCacheStrategy.ALL))
                 .transform(new GlideRoundTransform(holder.itemView.getContext()))
                 .into(holder.imageView);
         holder.hotelAddress.setText(hotel.getAddress());
         holder.hotelName.setText(hotel.getName());
-        holder.minPrice.setText(hotel.getMinCost());
+        holder.minPrice.setText(hotel.getPrice());
     }
 
     @Override

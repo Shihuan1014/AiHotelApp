@@ -1,6 +1,7 @@
 package edu.hnu.aihotel.util;
 
 import android.graphics.Color;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -12,5 +13,10 @@ public class StatusBarUtil {
         //Then call setStatusBarColor.
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(color);
+    }
+
+    public static void whiteBgAndBlackFont(Window window){
+        StatusBarUtil.changeStatusBarColor(window, Color.WHITE);
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 }

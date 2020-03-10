@@ -23,6 +23,9 @@
     <string name="menu_send">Send</string>
 
 
+    <!--后端-->
+    <string name="api_host">http://shihuan.site:8080/aihotel</string>
+    <string name="api_host_test">http://192.168.124.6:8080</string>
     <!--Iconfont-->
 
     <string name="tel">&#xe621;</string>

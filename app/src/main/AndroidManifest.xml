@@ -35,6 +35,8 @@
             android:hardwareAccelerated="true"
             >
         </activity>
+        <activity android:name=".activity.main.HotelSearchActivity">
+        </activity>
 
         <activity android:name=".activity.face.ChooseFunctionActivity"></activity>
         <activity

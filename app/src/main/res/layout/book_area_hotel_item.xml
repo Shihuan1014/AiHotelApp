@@ -19,25 +19,24 @@
         android:layout_weight="1"
         >
         <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:paddingTop="6dp"
+            android:textColor="@color/black"
+            android:text="海友上海新国际博览中心酒店"
+            >
+        </TextView>
+        <TextView
             android:id="@+id/hotel_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12dp"
-            android:paddingLeft="4dp"
             android:text="陆家嘴，距市中心7.5公里"
-            android:paddingTop="8dp"
-            >
-        </TextView>
-
-        <TextView
-            android:id="@+id/hotel_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:paddingLeft="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:paddingTop="4dp"
-            android:textColor="@color/black"
-            android:text="海友上海新国际博览中心酒店"
             >
         </TextView>
     </LinearLayout>
