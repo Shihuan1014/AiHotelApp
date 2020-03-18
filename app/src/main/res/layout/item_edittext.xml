@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/guest_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="每间房填写一位住客姓名"
+            android:textCursorDrawable="@drawable/edittext_cursor"
+            android:textSize="14dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:paddingBottom="10dp"
+            >
+
+        </EditText>
+        <TextView
+            android:id="@+id/name_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="15dp"
+            android:gravity="center"
+            android:text="@string/person">
+
+        </TextView>
+</LinearLayout>

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:paddingHorizontal="15dp"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     >
 
     <LinearLayout
@@ -41,6 +43,7 @@
                 ></TextView>
             <EditText
                 android:id="@+id/userName"
+                android:singleLine="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -54,7 +57,39 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/password_layout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="15dp"
+            android:background="@drawable/book_border_bottom"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="40dp"
+                android:text="密码"
+                android:textSize="18dp"
+                ></TextView>
+            <EditText
+                android:id="@+id/password"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:hint="123456"
+                android:textCursorDrawable="@drawable/black_edittext_cursor"
+                android:background="@null"
+                >
 
+            </EditText>
+
+        </LinearLayout>
         <Button
             android:id="@+id/face_login_btn"
             android:layout_width="match_parent"
@@ -64,6 +99,18 @@
             android:textSize="18dp"
             android:textColor="@color/colorWhite"
             android:text="刷脸登录"
+            >
+        </Button>
+        <Button
+            android:id="@+id/password_login_btn"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/book_btn"
+            android:layout_marginTop="40dp"
+            android:textSize="18dp"
+            android:textColor="@color/colorWhite"
+            android:text="登录"
             >
         </Button>
 

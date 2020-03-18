@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.io.File;
 import java.util.List;
@@ -46,6 +47,8 @@ public class FaceSearchResultAdapter extends RecyclerView.Adapter<FaceSearchResu
         File imgFile = new File(FaceServer.ROOT_PATH + File.separator + FaceServer.SAVE_IMG_DIR + File.separator + compareResultList.get(position).getUserName() + FaceServer.IMG_SUFFIX);
         Glide.with(holder.imageView)
                 .load(imgFile)
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .into(holder.imageView);
         holder.textView.setText(compareResultList.get(position).getUserName());
     }

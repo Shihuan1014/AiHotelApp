@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,18 +17,23 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import edu.hnu.aihotel.R;
+import edu.hnu.aihotel.activity.main.HotelCheckOrderActivity;
 import edu.hnu.aihotel.activity.main.RoomAroundActivity;
 
 public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHolder> {
 
-    private List<Room> roomList;
+    private List<RoomType> roomList;
 
     public RoomListAdapter(){
 
     }
 
-    public RoomListAdapter(List<Room> rooms){
+    public RoomListAdapter(List<RoomType> rooms){
         this.roomList = rooms;
+    }
+
+    public void initData(List<RoomType> rooms){
+        roomList = rooms;
     }
 
     @NonNull
@@ -44,17 +48,19 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RoomListAdapter.ViewHolder holder, int position) {
-        Room room = roomList.get(position);
-        Glide.with(holder.itemView).load(room.getCoverUrl()).into(holder.cover);
+        RoomType room = roomList.get(position);
+        Glide.with(holder.itemView).load(room.getImg()).into(holder.cover);
         holder.bedSize.setText(room.getBedSize());
-        holder.price.setText(room.getPrice());
-        holder.roomName.setText(room.getRoomName());
-        holder.roomSize.setText(room.getSize());
+        holder.price.setText(String.valueOf((int)room.getPrice()));
+        holder.roomName.setText(room.getName());
+        holder.roomSize.setText(room.getRoomSize());
         holder.window.setText(room.getWindow());
         holder.order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(),"预定功能完善中",Toast.LENGTH_SHORT);
+                Intent intent = new Intent(holder.itemView.getContext(), HotelCheckOrderActivity.class);
+                intent.putExtra("roomId",room.getId());
+                holder.itemView.getContext().startActivity(intent);
             }
         });
         holder.cover.setOnClickListener(new View.OnClickListener() {

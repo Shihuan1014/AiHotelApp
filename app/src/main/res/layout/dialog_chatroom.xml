@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="15dp"
+        android:background="@drawable/book_border_bottom"
+        android:paddingVertical="6dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="5dp"
+            android:textSize="16dp"
+            android:text="6人正在浏览">
+
+        </TextView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:background="@drawable/book_border_bottom"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="21:10"
+            android:paddingVertical="8dp"
+            >
+
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@color/colorPrimary"
+                android:layout_marginTop="5dp"
+                >
+
+            </ImageView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="3dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="12dp"
+                    android:text="重拾过去"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="5dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="14dp"
+                    android:text="来这里住过3次, 每次体验都不错"
+                    >
+
+                </TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="21:15"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="8dp"
+            >
+
+        </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@color/colorPrimaryDark"
+                android:layout_marginTop="5dp"
+                >
+
+            </ImageView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="3dp"
+                    android:paddingLeft="10dp"
+                    android:textSize="12dp"
+                    android:text="珍惜现在"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="5dp"
+                    android:paddingLeft="15dp"
+                    android:textSize="14dp"
+                    android:text="谢谢你们的分享"
+                    >
+
+                </TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_round"
+        android:textCursorDrawable="@drawable/edittext_cursor"
+        android:layout_marginHorizontal="5dp"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="3dp"
+        >
+
+    </EditText>
+</LinearLayout>

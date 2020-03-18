@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
-import com.zzhoujay.richtext.RichText;
 
 import java.util.List;
 
@@ -84,7 +83,7 @@ public class SocialNewsAdapter extends RecyclerView.Adapter<SocialNewsAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            Typeface typeface = Typeface.createFromAsset(itemView.getContext().getAssets(),"icons/iconfont.ttf");
+            Typeface typeface = Typeface.createFromAsset(itemView.getContext().getAssets(), "icons/iconfont.ttf");
             avatar = itemView.findViewById(R.id.avatar);
             userName = itemView.findViewById(R.id.userName);
             time = itemView.findViewById(R.id.share_time);

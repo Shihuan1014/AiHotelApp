@@ -19,7 +19,7 @@ import edu.hnu.aihotel.R;
 public class MainAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1
             , R.string.tab_text_3, R.string.tab_text_4};
 
     private final Context mContext;

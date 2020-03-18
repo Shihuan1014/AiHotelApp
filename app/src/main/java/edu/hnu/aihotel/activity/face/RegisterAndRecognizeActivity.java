@@ -237,7 +237,7 @@ public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTr
         //本地人脸库初始化
         FaceServer.getInstance().init(this);
         initView();
-        if(type==2 && FaceServer.getInstance().hasRegister(MainActivity.userInfo.getUserId())){
+        if(type==2 && FaceServer.getInstance().hasRegister(MainActivity.user.getId())){
             dialog.setDialogMsg("已通过安全检测, 无需重复注册");
             dialog.setImageOfResource(R.drawable.pass);
             dialog.show();
@@ -429,7 +429,8 @@ public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTr
                         else if(type==2 &&!canRegister){
                             canRegister = true;
                             registerHandler.removeCallbacks(registerDelay);
-                            faceMaskLayer.startAnimator();
+//                            faceMaskLayer.startAnimator();
+                            faceMaskLayer.initAnimator3();
                             registerHandler.postDelayed(registerDelay,1500);
                         }
                     }
@@ -633,7 +634,7 @@ public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTr
                 public void subscribe(ObservableEmitter<Boolean> emitter) {
 
                     boolean success = FaceServer.getInstance().registerNv21(RegisterAndRecognizeActivity.this, nv21.clone(), previewSize.width, previewSize.height,
-                            facePreviewInfoList.get(0).getFaceInfo(), MainActivity.userInfo.getUserId());
+                            facePreviewInfoList.get(0).getFaceInfo(), MainActivity.user.getId());
                     emitter.onNext(success);
                 }
             })
@@ -806,7 +807,21 @@ public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTr
                                 compareResultList.add(compareResult);
                                 adapter.notifyItemInserted(compareResultList.size() - 1);
                             }
+                            faceMaskLayer.initAnimator3();
                             showToast("登录成功，您的id是" + getString(R.string.recognize_success_notice, compareResult.getUserName()));
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Thread.sleep(1000);
+                                        Intent intent = new Intent("loginSuccess");
+                                        sendBroadcast(intent);
+                                        RegisterAndRecognizeActivity.this.finish();
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }).start();
                             requestFeatureStatusMap.put(requestId, RequestFeatureStatus.SUCCEED);
                             faceHelper.setName(requestId, getString(R.string.recognize_success_notice, compareResult.getUserName()));
 

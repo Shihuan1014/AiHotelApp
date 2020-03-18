@@ -101,8 +101,12 @@ public class HotelSearchActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 String str = response.body().string();
                 System.out.println(str);
-                hotelList = gson.fromJson(str,new TypeToken<List<Hotel>>(){}.getType());
-                hotelListAdapter.initData(hotelList);
+                try {
+                    hotelList = gson.fromJson(str,new TypeToken<List<Hotel>>(){}.getType());
+                    hotelListAdapter.initData(hotelList);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

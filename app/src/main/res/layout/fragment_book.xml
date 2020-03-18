@@ -1,197 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/swipe_fresh"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/book_bg"
+        android:overScrollMode="never"
         >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:padding="15dp"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:background="@drawable/book_page_radius"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="15dp"
-                android:layout_marginHorizontal="8dp"
-                android:background="@drawable/book_border_bottom"
-                >
-                <TextView
-                    android:id="@+id/region"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="textStart"
-                    android:text="长沙"
-                    android:textSize="16dp"
-                    >
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:textAlignment="textEnd"
-                    android:text="定位"
-                    android:textSize="16dp"
-                    >
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="15dp"
-                android:layout_marginHorizontal="8dp"
-                android:background="@drawable/book_border_bottom"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical" android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/book_bg"
                 >
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:padding="15dp"
+                    android:layout_marginHorizontal="15dp"
                     android:orientation="vertical"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/book_page_radius"
                     >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="周五入住"
-                        >
 
-                    </TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingVertical="15dp"
+                        android:layout_marginHorizontal="8dp"
+                        android:background="@drawable/book_border_bottom"
+                        >
+                        <TextView
+                            android:id="@+id/region"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAlignment="textStart"
+                            android:text="长沙"
+                            android:textSize="16dp"
+                            >
+                        </TextView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAlignment="textEnd"
+                            android:text="定位"
+                            android:textSize="16dp"
+                            >
+                        </TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="15dp"
+                        android:layout_marginHorizontal="8dp"
+                        android:background="@drawable/book_border_bottom"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:text="周五入住"
+                                >
+
+                            </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:text="2月28日"
+                                >
+                            </TextView>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:text="共一晚"
+                            android:textSize="14dp"
+                            >
+                        </TextView>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:orientation="vertical"
+                            >
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:text="周六离店"
+                                >
+
+                            </TextView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                android:text="2月29日"
+                                android:textColor="@color/black"
+                                >
+                            </TextView>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/search_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:paddingVertical="15dp"
                         android:textSize="16dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:text="2月28日"
+                        android:gravity="left"
+                        android:hint="关键字/酒店/地标"
+                        android:background="@null"
+                        android:textCursorDrawable="@drawable/black_edittext_cursor"
                         >
-                    </TextView>
+
+                    </EditText>
+
+                    <Button
+                        android:id="@+id/search_hotel"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="0dp"
+                        android:layout_margin="0dp"
+                        android:background="@drawable/book_btn"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorWhite"
+                        android:text="搜索酒店"
+                        >
+
+                    </Button>
                 </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:text="共一晚"
-                    android:textSize="14dp"
-                    >
-                </TextView>
+
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
                     android:orientation="vertical"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/colorWhite"
                     >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:text="周六离店"
-                        >
-
-                    </TextView>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:paddingVertical="20dp"
                         android:textSize="16dp"
                         android:textStyle="bold"
-                        android:text="2月29日"
+                        android:text="为您推荐"
+                        android:paddingHorizontal="15dp"
                         android:textColor="@color/black"
                         >
                     </TextView>
+
+                        <!--区域酒店均价-->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/area_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="15dp"
+                        >
+                        <!--该区域的酒店列表-->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/area_hotel_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="10dp"
+                            android:overScrollMode="never"
+                            >
+
+                        </androidx.recyclerview.widget.RecyclerView>
+                    </RelativeLayout>
                 </LinearLayout>
 
-
             </LinearLayout>
-
-            <EditText
-                android:id="@+id/search_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:paddingVertical="15dp"
-                android:textSize="16dp"
-                android:gravity="left"
-                android:hint="关键字/酒店/地标"
-                android:background="@null"
-                android:textCursorDrawable="@drawable/black_edittext_cursor"
-                >
-
-            </EditText>
-
-            <Button
-                android:id="@+id/search_hotel"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:padding="0dp"
-                android:layout_margin="0dp"
-                android:background="@drawable/book_btn"
-                android:textSize="16dp"
-                android:textColor="@color/colorWhite"
-                android:text="搜索酒店"
-                >
-
-            </Button>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="15dp"
-            android:background="@color/colorWhite"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="20dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:text="为您推荐"
-                android:paddingHorizontal="15dp"
-                android:textColor="@color/black"
-                >
-            </TextView>
-
-            <!--区域酒店均价-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/area_info"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingHorizontal="15dp"
-                >
-                <!--该区域的酒店列表-->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/area_hotel_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginVertical="10dp"
-                    >
-
-                </androidx.recyclerview.widget.RecyclerView>
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.core.widget.NestedScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

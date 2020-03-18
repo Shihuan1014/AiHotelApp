@@ -2,27 +2,47 @@ package edu.hnu.aihotel.ui.bookHotel;
 
 public class Hotel {
 
-    private String hotelId;
+
+    private String id;
     private String name;
     private String address;
-    private String areas;
-    private String cover;
-    private String score;
-    private String hasFood;
-    private String hasFitness;
-    private String hasWifi;
-    private String hasPark;
-    private String price;
-    private String link;
+    private int dpcount;
+    private int dpscore;
+    private String img;
+    private String isSingleRec;
+    private String lat;
+    private String lon;
+    private double score;
+    private String shortName;
+    private String star;
+    private String stardesc;
+    private String url;
     private String cityNo;
+    private String openYear;
+    private String tel;
 
-
-    public String getHotelId() {
-        return hotelId;
+    public String getTel() {
+        return tel;
     }
 
-    public void setHotelId(String hotelId) {
-        this.hotelId = hotelId;
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
+    public String getOpenYear() {
+        return openYear;
+    }
+
+    public void setOpenYear(String openYear) {
+        this.openYear = openYear;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,76 +61,92 @@ public class Hotel {
         this.address = address;
     }
 
-    public String getAreas() {
-        return areas;
+    public int getDpcount() {
+        return dpcount;
     }
 
-    public void setAreas(String areas) {
-        this.areas = areas;
+    public void setDpcount(int dpcount) {
+        this.dpcount = dpcount;
     }
 
-    public String getCover() {
-        return cover;
+    public int getDpscore() {
+        return dpscore;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setDpscore(int dpscore) {
+        this.dpscore = dpscore;
     }
 
-    public String getScore() {
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getIsSingleRec() {
+        return isSingleRec;
+    }
+
+    public void setIsSingleRec(String isSingleRec) {
+        this.isSingleRec = isSingleRec;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public double getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(double score) {
         this.score = score;
     }
 
-    public String getHasFood() {
-        return hasFood;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setHasFood(String hasFood) {
-        this.hasFood = hasFood;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
-    public String getHasFitness() {
-        return hasFitness;
+    public String getStar() {
+        return star;
     }
 
-    public void setHasFitness(String hasFitness) {
-        this.hasFitness = hasFitness;
+    public void setStar(String star) {
+        this.star = star;
     }
 
-    public String getHasWifi() {
-        return hasWifi;
+    public String getStardesc() {
+        return stardesc;
     }
 
-    public void setHasWifi(String hasWifi) {
-        this.hasWifi = hasWifi;
+    public void setStardesc(String stardesc) {
+        this.stardesc = stardesc;
     }
 
-    public String getHasPark() {
-        return hasPark;
+    public String getUrl() {
+        return url;
     }
 
-    public void setHasPark(String hasPark) {
-        this.hasPark = hasPark;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getCityNo() {
@@ -124,18 +160,20 @@ public class Hotel {
     @Override
     public String toString() {
         return "Hotel{" +
-                "hotelId='" + hotelId + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", areas='" + areas + '\'' +
-                ", cover='" + cover + '\'' +
-                ", score='" + score + '\'' +
-                ", hasFood='" + hasFood + '\'' +
-                ", hasFitness='" + hasFitness + '\'' +
-                ", hasWifi='" + hasWifi + '\'' +
-                ", hasPark='" + hasPark + '\'' +
-                ", price='" + price + '\'' +
-                ", link='" + link + '\'' +
+                ", dpcount=" + dpcount +
+                ", dpscore=" + dpscore +
+                ", img='" + img + '\'' +
+                ", isSingleRec='" + isSingleRec + '\'' +
+                ", lat='" + lat + '\'' +
+                ", lon='" + lon + '\'' +
+                ", score=" + score +
+                ", shortName='" + shortName + '\'' +
+                ", star='" + star + '\'' +
+                ", stardesc='" + stardesc + '\'' +
+                ", url='" + url + '\'' +
                 ", cityNo='" + cityNo + '\'' +
                 '}';
     }
