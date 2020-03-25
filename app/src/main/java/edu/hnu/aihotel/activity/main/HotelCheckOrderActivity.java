@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import edu.hnu.aihotel.MainActivity;
@@ -71,26 +73,34 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
     private List<String> roomList;
     private List<String> arriveTimeList;
     private LinearLayout guestsLayout;
+    private String startDate;
+    private String endDate;
+    private int period;
+    private RoomNumAdapter roomNumAdapter;
 
     @Override
     protected void onCreate(Bundle saveInstance){
         super.onCreate(saveInstance);
         setContentView(R.layout.activity_check_order);
         gson = new Gson();
-        roomId = getIntent().getStringExtra("roomId");
-
+        Intent intent = getIntent();
+        roomId = intent.getStringExtra("roomId");
+        startDate = intent.getStringExtra("startDate");
+        endDate = intent.getStringExtra("endDate");
+        period = intent.getIntExtra("period",0);
         Window window = getWindow();
         StatusBarUtil.changeStatusBarColor(window, getResources().getColor(R.color.colorPrimary));
         //小键盘不破坏布局
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         order = new Order();
         order.setRoomNum(1);
-        initView();
         initRoom();
+        initView();
     }
 
     private void initRoom(){
-        String url = getResources().getString(R.string.api_host_test) + "/room/getRoomTypeById?roomId="+roomId;
+        String url = getResources().getString(R.string.api_host_test) + "/room/getRoomTypeByIdWithNum?roomId="+
+                roomId+"&startDate="+startDate+"&endDate="+endDate;
         HttpUtil.httpGet(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -107,11 +117,22 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
                     public void run() {
                         roomTypeView.setText(roomType.getName());
                         bedTypeView.setText(roomType.getBedType() + "·" + roomType.getBreakfast());
-                        priceView.setText("￥" + String.valueOf((int)roomType.getPrice()));
                         discountView.setText("已优惠 ￥" + String.valueOf(roomType.getDiscount()));
+                        priceView.setText("￥" + String.valueOf(period*(int)roomType.getPrice()));
                         hotelNameView.setText(roomType.getHotelName());
                         order.setRoomId(roomType.getId());
                         order.setHotelId(roomType.getHotelId());
+                        int l = roomType.getLeftNum();
+                        if(l > 6){
+                            l = 6;
+                        }else if(l == 0){
+                            l = 1;
+                        }
+                        for(int i = 1;i < l+1;i ++){
+                            roomList.add(i+"间");
+                        }
+                        roomNumAdapter.initData(roomList);
+                        setGuestsNum(1);
                     }
                 });
             }
@@ -150,8 +171,8 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
                 String t;
                 order.setHotelId(roomType.getHotelId());
                 order.setRoomId(roomType.getId());
-                order.setStartDate("2020-03-18");
-                order.setEndDate("2020-03-19");
+                order.setStartDate(startDate);
+                order.setEndDate(endDate);
                 String guests = "";
                 EditText tmpEdit;
                 for(int i = 0; i < guestsLayout.getChildCount(); i++){
@@ -174,7 +195,7 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
                     return;
                 }
                 order.setGuests(guests);
-                order.setUserId(MainActivity.userInfo.getUserId());
+                order.setUserId(MainActivity.user.getId());
                 System.out.println(order);
                 String url = getString(R.string.api_host_test) + "/book/makeOrder";
 
@@ -194,7 +215,8 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
                             intent.putExtra("aliPayString", jsonObject.getString("aliPayString"));
                             intent.putExtra("price",jsonObject.getString("price"));
                             intent.putExtra("orderName",jsonObject.getString("orderName"));
-                            startActivity(intent);
+                            intent.putExtra("created",jsonObject.getLong("created"));
+                            startActivityForResult(intent,1);
                         }catch (Exception e){
                             e.printStackTrace();
                         }
@@ -209,14 +231,9 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
         discountView = findViewById(R.id.discount);
         hotelNameView = findViewById(R.id.hotel_name);
 
-
-        roomNumListView = findViewById(R.id.room_num_choose);
         roomList = new ArrayList<String>();
-        roomList.add("1间");
-        roomList.add("2间");
-        roomList.add("3间");
-        roomList.add("4间");roomList.add("5间");roomList.add("6间");
-        RoomNumAdapter roomNumAdapter = new RoomNumAdapter(roomList);
+        roomNumListView = findViewById(R.id.room_num_choose);
+        roomNumAdapter = new RoomNumAdapter(roomList);
         roomNumAdapter.setOnItemClickListener(new RoomNumAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -265,12 +282,23 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
         backBtn.setTypeface(typeface);
 
         telEditText = findViewById(R.id.tel);
+        telEditText.setText(MainActivity.user.getTel());
         guestsLayout = findViewById(R.id.layout_guests);
-        setGuestsNum(1);
+
+
+        TextView dateView = findViewById(R.id.date_str);
+        String str = "";
+
+        str +=  startDate.substring(5,7)+ "月" + startDate.substring(8)+"日 /" ;
+        str +=  endDate.substring(5,7)+ "月" + endDate.substring(8)+"日 共" ;
+        str += period + "晚";
+        dateView.setText(str);
     }
 
     private void setGuestsNum(int i){
         int sum = guestsLayout.getChildCount();
+        int price = (int) (roomType.getPrice() * i * period);
+        priceView.setText("￥"+ String.valueOf(price));
         if(i < sum){
             guestsLayout.removeViews(i,sum-i);
         }else{
@@ -289,5 +317,17 @@ public class HotelCheckOrderActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //此处可以根据两个Code进行判断，本页面和结果页面跳过来的值
+        if (requestCode == 1 && resultCode == 3) {
+            String result = data.getStringExtra("result");
+            if(result.equals("success")){
+                finish();
+            }
+        }
     }
 }

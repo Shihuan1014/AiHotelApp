@@ -3,6 +3,7 @@ package edu.hnu.aihotel.activity.face;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -39,7 +41,14 @@ import com.arcsoft.face.LivenessInfo;
 import com.arcsoft.face.VersionInfo;
 import com.arcsoft.face.enums.DetectFaceOrientPriority;
 import com.arcsoft.face.enums.DetectMode;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -50,12 +59,15 @@ import java.util.concurrent.TimeUnit;
 
 import edu.hnu.aihotel.MainActivity;
 import edu.hnu.aihotel.R;
+import edu.hnu.aihotel.activity.main.LoginActivity;
 import edu.hnu.aihotel.faceserver.CompareResult;
 import edu.hnu.aihotel.faceserver.FaceServer;
 import edu.hnu.aihotel.model.DrawInfo;
 import edu.hnu.aihotel.model.FacePreviewInfo;
+import edu.hnu.aihotel.model.User;
 import edu.hnu.aihotel.util.ConfigUtil;
 import edu.hnu.aihotel.util.DrawHelper;
+import edu.hnu.aihotel.util.HttpUtil;
 import edu.hnu.aihotel.util.StatusBarUtil;
 import edu.hnu.aihotel.util.camera.CameraHelper;
 import edu.hnu.aihotel.util.camera.CameraListener;
@@ -78,6 +90,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.Headers;
+import okhttp3.Response;
 
 public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTreeObserver.OnGlobalLayoutListener {
     private static final String TAG = "RegisterAndRecognize";
@@ -808,15 +825,15 @@ public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTr
                                 adapter.notifyItemInserted(compareResultList.size() - 1);
                             }
                             faceMaskLayer.initAnimator3();
-                            showToast("登录成功，您的id是" + getString(R.string.recognize_success_notice, compareResult.getUserName()));
+                            String id = compareResult.getUserName();
+                            showToast("登录成功，您的id是" + id);
                             new Thread(new Runnable() {
                                 @Override
                                 public void run() {
                                     try {
-                                        Thread.sleep(1000);
-                                        Intent intent = new Intent("loginSuccess");
-                                        sendBroadcast(intent);
-                                        RegisterAndRecognizeActivity.this.finish();
+                                        Map<String,String> map = MainActivity.userDbHelper.getUserById(id);
+                                        System.out.println(map);
+                                        login(map.get("tel"),map.get("password"));
                                     }catch (Exception e){
                                         e.printStackTrace();
                                     }
@@ -845,6 +862,67 @@ public class RegisterAndRecognizeActivity extends BaseActivity implements ViewTr
                 });
     }
 
+    private void login(String tel, String pw){
+        String url = getString(R.string.api_host_test) + "/userOauth/loginByPw";
+        System.out.println(url);
+        FormBody.Builder builder = new FormBody.Builder();
+        builder.add("tel",tel);
+        builder.add("password",pw);
+        FormBody body = builder.build();
+        HttpUtil.httpPost(url, body, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                System.out.println("error");
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String str = response.body().string();
+                JSONObject jsonObject;
+                try {
+                    jsonObject = new JSONObject(str);
+                    str = jsonObject.getString("userInfo");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+                Gson gson = new Gson();
+                System.out.println(str);
+                User user = gson.fromJson(str,new TypeToken<User>(){}.getType());
+                if(user.getId()!=null){
+                    MainActivity.user = user;
+                    Intent intent = new Intent("loginSuccess");
+                    sendBroadcast(intent);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Headers headers =response.headers();
+                            try {
+                                List cookies = headers.values("Set-Cookie");
+                                System.out.println("cookie size" + cookies.size());
+                                String session = cookies.get(0).toString();
+                                String sessionid = session.substring(0, session.indexOf(";"));
+                                MainActivity.sessionId = sessionid;
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(getApplicationContext(), "登录成功, " + user.getUserName(), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent("loginSuccess");
+                            sendBroadcast(intent);
+                            RegisterAndRecognizeActivity.this.finish();
+                        }
+                    });
+                }else{
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),"登录失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
+    }
 
     /**
      * 将准备注册的状态置为{@link #REGISTER_STATUS_READY}

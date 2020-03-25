@@ -1,6 +1,10 @@
 package edu.hnu.aihotel;
 
+import android.content.Context;
+
 import org.junit.Test;
+
+import edu.hnu.aihotel.util.UserDbHelper;
 
 import static org.junit.Assert.*;
 

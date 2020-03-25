@@ -9,20 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.List;
 
 import edu.hnu.aihotel.R;
+import edu.hnu.aihotel.widget.main.GlideRoundTransform;
 
 public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHolder> {
 
-    private String[] pictures;
+    private List<String> pictures;
 
     public PictureAdapter(){
 
     }
 
-    public PictureAdapter(String[] pictures){
+    public PictureAdapter(List<String> pictures){
         this.pictures = pictures;
     }
 
@@ -37,19 +39,22 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String url = pictures[position];
+        String url = pictures.get(position);
         Glide.with(holder.itemView.getContext()).load(url)
+                .transform(new GlideRoundTransform(holder.itemView.getContext()))
+                .transition(new DrawableTransitionOptions().crossFade())
+                .placeholder(R.drawable.placeholder)
                 .into(holder.imageView);
     }
 
-    public void initData(String[] pictures){
+    public void initData(List<String> pictures){
         this.pictures = pictures;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return pictures.length;
+        return pictures.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

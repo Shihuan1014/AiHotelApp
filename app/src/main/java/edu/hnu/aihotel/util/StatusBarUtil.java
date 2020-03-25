@@ -20,9 +20,9 @@ public class StatusBarUtil {
         window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
 
-    private void setOpacityStateBar(Window window){
+    public static void setOpacityStateBar(Window window, boolean light){
         View decor = window.getDecorView();
-        if (true) {
+        if (light) {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         } else {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);

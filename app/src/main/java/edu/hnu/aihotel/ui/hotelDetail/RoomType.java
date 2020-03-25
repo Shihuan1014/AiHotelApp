@@ -16,7 +16,15 @@ public class RoomType {
     private int num;
     private String roomSize;
     private int discount;
+    private int leftNum;
 
+    public int getLeftNum() {
+        return leftNum;
+    }
+
+    public void setLeftNum(int leftNum) {
+        this.leftNum = leftNum;
+    }
 
     public String getHotelName() {
         return hotelName;

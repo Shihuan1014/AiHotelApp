@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -153,17 +154,22 @@ public class LoginActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Glide.with(LoginActivity.this).load(user.getAvatar())
-                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                    .skipMemoryCache(true)
-                                    .into(avatar);
-                            Headers headers =response.headers();
-                            List cookies = headers.values("Set-Cookie");
-                            String session = cookies.get(0).toString();
-                            String sessionid = session.substring(0,session.indexOf(";"));
-                            MainActivity.sessionId = sessionid;
-                            Toast.makeText(getApplicationContext(),"登录成功, "+ user.getUserName(),Toast.LENGTH_SHORT).show();
-                            LoginActivity.this.finish();
+                            try {
+                                Glide.with(LoginActivity.this).load(user.getAvatar())
+                                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                        .skipMemoryCache(true)
+                                        .into(avatar);
+                                Headers headers = response.headers();
+                                List cookies = headers.values("Set-Cookie");
+                                String session = cookies.get(0).toString();
+                                String sessionid = session.substring(0, session.indexOf(";"));
+                                MainActivity.sessionId = sessionid;
+                                MainActivity.userDbHelper.insertUser(user.getId(),tel, pw);
+                                Toast.makeText(getApplicationContext(), "登录成功, " + user.getUserName(), Toast.LENGTH_SHORT).show();
+                                LoginActivity.this.finish();
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
                         }
                     });
                 }else{
@@ -204,5 +210,11 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(broadcastReceiver);
+        super.onDestroy();
     }
 }

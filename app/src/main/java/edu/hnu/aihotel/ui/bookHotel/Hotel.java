@@ -20,6 +20,24 @@ public class Hotel {
     private String cityNo;
     private String openYear;
     private String tel;
+    private double minPrice;
+    private double distance;
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
+    }
 
     public String getTel() {
         return tel;

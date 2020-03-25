@@ -10,6 +10,7 @@
         android:background="@color/colorGray"
         >
         <LinearLayout
+            android:id="@+id/layout_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -202,9 +203,9 @@
                     android:gravity="center"
                     >
                     <LinearLayout
+                        android:id="@+id/layout_start"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:paddingVertical="12dp">
                         <TextView
                             android:id="@+id/check_in_time"
@@ -229,14 +230,16 @@
                         android:id="@+id/total_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="共一晚"
+                        android:text="共1晚"
+                        android:gravity="center"
+                        android:layout_weight="1"
                         >
 
                     </TextView>
                     <LinearLayout
+                        android:id="@id/layout_end"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="right"
                         android:paddingVertical="12dp">
                         <TextView
@@ -279,6 +282,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/float_btn"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

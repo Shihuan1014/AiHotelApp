@@ -14,6 +14,12 @@ android {
             abiFilters "armeabi-v7a"
         }
     }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -58,4 +64,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.6.2'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
     implementation (name: 'alipaySdk-15.7.4-20200228192259', ext: 'aar')
+    implementation 'com.zhihu.android:matisse:0.5.3-beta3'
 }

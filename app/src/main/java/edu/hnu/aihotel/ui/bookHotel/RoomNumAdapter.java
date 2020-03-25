@@ -33,6 +33,11 @@ public class RoomNumAdapter extends RecyclerView.Adapter<RoomNumAdapter.ViewHold
         this.list = list;
     }
 
+    public void initData(List<String> list){
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }

@@ -6,6 +6,15 @@
     <string name="tab_text_3">健身</string>
     <string name="tab_text_4">圈子</string>
 
+
+    <string name="tab_order_text_1">全部</string>
+    <string name="tab_order_text_2">待付款</string>
+    <string name="tab_order_text_3">待使用</string>
+    <string name="tab_order_text_4">待评价</string>
+    <string name="tab_order_text_5">退款/售后</string>
+
+    <string name="errorFile" formatted="false">文件错误: %d %s</string>
+
     <string name="font_usercenter">&#xe604;</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -24,9 +33,9 @@
 
 
     <!--后端-->
-    <string name="api_host">http://shihuan.site:8080/aihotel</string>
-<!--    <string name="api_host_test">http://shihuan.site:6666/test/</string>-->
     <string name="api_host_test">http://192.168.124.8:8080/test/</string>
+<!--    <string name="api_host_test">http://shihuan.site:6666/test/</string>-->
+    <string name="api_host">http://shihuan.site/test/</string>
     <!--Iconfont-->
 
     <string name="tel">&#xe621;</string>

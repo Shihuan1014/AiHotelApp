@@ -13,22 +13,6 @@ public class User {
     private String brief;
     private String avatar;
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public String getBrief() {
-        return brief;
-    }
-
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
-
     public String getId() {
         return id;
     }
@@ -77,6 +61,22 @@ public class User {
         this.lastLogin = lastLogin;
     }
 
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -86,6 +86,8 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", lastLogin=" + lastLogin +
+                ", brief='" + brief + '\'' +
+                ", avatar='" + avatar + '\'' +
                 '}';
     }
 }

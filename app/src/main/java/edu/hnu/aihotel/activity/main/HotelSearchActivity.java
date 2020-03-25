@@ -44,7 +44,6 @@ public class HotelSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_hotel);
         StatusBarUtil.whiteBgAndBlackFont(getWindow());
         initView();
-
     }
 
     private void initView(){
@@ -55,6 +54,8 @@ public class HotelSearchActivity extends AppCompatActivity {
         searchInput.setHint(defaultKeyWord);
         if (kw!=null && kw.trim().length()> 0){
             searchInput.setText(kw);
+        }else{
+            search("");
         }
         searchInput.requestFocus();
         searchInput.setOnKeyListener(new View.OnKeyListener() {
@@ -78,10 +79,6 @@ public class HotelSearchActivity extends AppCompatActivity {
     }
 
     private void search(String word){
-        if(word.trim().length()==0){
-            word = defaultKeyWord;
-            searchInput.setText(defaultKeyWord);
-        }
         fetchDataByKeyword(word);
         searchInput.clearFocus();
         InputMethodManager manager = ((InputMethodManager)HotelSearchActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE));

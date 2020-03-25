@@ -23,7 +23,9 @@ import edu.hnu.aihotel.activity.main.RoomAroundActivity;
 public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHolder> {
 
     private List<RoomType> roomList;
-
+    private String startDate;
+    private String endDate;
+    private int period;
     public RoomListAdapter(){
 
     }
@@ -46,6 +48,12 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
         return viewHolder;
     }
 
+    public void setDate(String startDate,String endDate,int period){
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.period = period;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RoomListAdapter.ViewHolder holder, int position) {
         RoomType room = roomList.get(position);
@@ -60,6 +68,9 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomListAdapter.ViewHo
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), HotelCheckOrderActivity.class);
                 intent.putExtra("roomId",room.getId());
+                intent.putExtra("startDate",startDate);
+                intent.putExtra("endDate",endDate);
+                intent.putExtra("period",period);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

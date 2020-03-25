@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -23,7 +24,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.PayTask;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.xml.transform.Result;
 
@@ -46,6 +51,7 @@ public class HotelPayActivity extends AppCompatActivity {
     private int payWay = 0;
     private final int WX_PAY = 0;
     private final int ALI_PAY = 1;
+    private Long created;
     private String aliPayString = "app_id=2015052600090779&biz_content=%7B%22timeout_express%22%3A%2230m%22%2C%22seller_id%22%3A%22%22%2C%22product_code%22%3A%22QUICK_MSECURITY_PAY%22%2C%22total_amount%22%3A%220.02%22%2C%22subject%22%3A%221%22%2C%22body%22%3A%22%E6%88%91%E6%98%AF%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%22%2C%22out_trade_no%22%3A%22314VYGIAGG7ZOYY%22%7D&charset=utf-8&method=alipay.trade.app.pay&sign_type=RSA2&timestamp=2016-08-15%2012%3A12%3A15&version=1.0&sign=MsbylYkCzlfYLy9PeRwUUIg9nZPeN9SfXPNavUCroGKR5Kqvx0nEnd3eRmKxJuthNUx4ERCXe552EV9PfwexqW%2B1wbKOdYtDIb4%2B7PL3Pc94RZL0zKaWcaY3tSL89%2FuAVUsQuFqEJdhIukuKygrXucvejOUgTCfoUdwTi7z%2BZzQ%3D";   // 订单信息
 
     /**
@@ -79,6 +85,8 @@ public class HotelPayActivity extends AppCompatActivity {
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
 
+    private CountDownTimer timer2;
+
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
@@ -95,7 +103,10 @@ public class HotelPayActivity extends AppCompatActivity {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        showAlert(HotelPayActivity.this, getString(R.string.pay_success) + payResult);
+//                        showAlert(HotelPayActivity.this, getString(R.string.pay_success) + payResult);
+                        Intent intent = new Intent();
+                        intent.putExtra("result","success");
+                        setResult(3,intent);
                         HotelPayActivity.this.finish();
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
@@ -138,9 +149,33 @@ public class HotelPayActivity extends AppCompatActivity {
         StatusBarUtil.changeStatusBarColor(window, getResources().getColor(R.color.colorGray));
         Intent intent = getIntent();
         aliPayString = intent.getStringExtra("aliPayString");
+        created = intent.getLongExtra("created",System.currentTimeMillis());
         initView();
         priceView.setText(intent.getStringExtra("price"));
         orderNameView.setText(intent.getStringExtra("orderName"));
+
+        Timer timer = new Timer();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("mm:ss");
+        final long period = 30*60*1000L - (System.currentTimeMillis() - created);
+        if(period>0L){
+            timer2 = new CountDownTimer(period, 1000) {
+                //根据间隔时间来不断回调此方法，这里是每隔1000ms调用一次
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    String s = simpleDateFormat.format(millisUntilFinished);
+                    System.out.println(s);
+                    leftTimeView.setText(s);
+                }
+
+                //结束倒计时调用
+                @Override
+                public void onFinish() {
+                    //todo
+                }
+            };
+            timer2.start();
+        }
+
     }
 
     private void initView(){
@@ -224,5 +259,13 @@ public class HotelPayActivity extends AppCompatActivity {
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
         payThread.start();
+    }
+
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        timer2.cancel();
+        timer2 = null;
     }
 }

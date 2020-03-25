@@ -5,12 +5,32 @@
     android:layout_height="wrap_content"
     >
 
-    <ImageView
-        android:id="@+id/book_hotel_cover"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"
-        app:srcCompat="@color/colorGray"></ImageView>
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/book_hotel_cover"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@color/colorGray"></ImageView>
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="距离1.3km"
+            android:textSize="12dp"
+            android:padding="5dp"
+            android:textColor="@color/colorWhite"
+            >
+
+        </TextView>
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +45,7 @@
             android:textSize="14dp"
             android:paddingTop="6dp"
             android:textColor="@color/black"
+            android:layout_weight="1"
             android:text="海友上海新国际博览中心酒店"
             >
         </TextView>
@@ -40,8 +61,6 @@
             >
         </TextView>
     </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

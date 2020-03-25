@@ -74,7 +74,8 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
                 .into(holder.imageView);
         holder.hotelAddress.setText(hotel.getAddress());
         holder.hotelName.setText(hotel.getName());
-        holder.minPrice.setText("300");
+        holder.minPrice.setText(String.valueOf((int)hotel.getMinPrice()));
+        holder.distance.setText(String.valueOf((float) ((int)hotel.getDistance())/1000) + "km");
     }
 
     @Override
@@ -87,6 +88,7 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
         private TextView hotelAddress;
         private TextView hotelName;
         private TextView minPrice;
+        private TextView distance;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -94,6 +96,7 @@ public class HotelListAdapter extends RecyclerView.Adapter<HotelListAdapter.View
             hotelAddress = itemView.findViewById(R.id.hotel_address);
             hotelName = itemView.findViewById(R.id.hotel_name);
             minPrice = itemView.findViewById(R.id.minPrice);
+            distance = itemView.findViewById(R.id.distance);
         }
     }
 }

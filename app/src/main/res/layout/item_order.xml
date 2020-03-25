@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="15dp"
+    android:background="@drawable/course_bg"
+    android:layout_marginTop="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="15dp"
+        android:paddingVertical="10dp"
+        android:background="@drawable/book_border_bottom"
+        >
+
+        <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="经商酒店"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/order_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已完成"
+            android:textSize="13dp"
+            >
+
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:paddingTop="10dp"
+        >
+        <ImageView
+            android:id="@+id/hotel_cover"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@color/colorGray"
+            android:scaleType="centerCrop"
+            android:layout_marginRight="15dp"
+            >
+
+        </ImageView>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/order_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3间, 舒适大床房"
+                android:paddingVertical="1dp"
+                android:textSize="13dp"
+                android:textColor="#646464"
+                >
+
+            </TextView>
+            <TextView
+                android:id="@+id/order_period"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2020-03-11 至 2020-03-12"
+                android:paddingVertical="1dp"
+                android:textSize="13dp"
+                android:textColor="#646464"
+                >
+
+            </TextView>
+            <TextView
+                android:id="@+id/order_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="总价：￥261.00"
+                android:paddingVertical="1dp"
+                android:textSize="13dp"
+                android:textColor="#646464"
+                >
+
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp"
+        >
+        <Button
+            android:id="@+id/order_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:padding="0dp"
+            android:background="@drawable/order_book_btn"
+            android:textColor="#555555"
+            android:textSize="12dp"
+            android:text="再次预订"
+            >
+
+        </Button>
+    </LinearLayout>
+</LinearLayout>

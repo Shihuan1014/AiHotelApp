@@ -1,6 +1,10 @@
 package edu.hnu.aihotel.model;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class Order {
+
     private String id;
     private String userId;
     private String hotelId;
@@ -14,24 +18,42 @@ public class Order {
     private int roomNum;
     private int payStatus;
     private String payWay;
+    private String created;
+    private String hotelName;
+    private String hotelCover;
+    private String orderName;
+    private int status;
 
-    public Order(){
-
+    public int getStatus() {
+        return status;
     }
 
-    public Order(String id, String userId, String hotelId, String roomId, String startDate, String endDate, Double price, String guests, String phones, String arriveTime, int roomNum, String payWay) {
-        this.id = id;
-        this.userId = userId;
-        this.hotelId = hotelId;
-        this.roomId = roomId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.price = price;
-        this.guests = guests;
-        this.phones = phones;
-        this.arriveTime = arriveTime;
-        this.roomNum = roomNum;
-        this.payWay = payWay;
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public String getHotelCover() {
+        return hotelCover;
+    }
+
+    public void setHotelCover(String hotelCover) {
+        this.hotelCover = hotelCover;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
     }
 
     public String getId() {
@@ -138,22 +160,31 @@ public class Order {
         this.payWay = payWay;
     }
 
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
     @Override
     public String toString() {
-        return "Order{" +
+        return "Book{" +
                 "id='" + id + '\'' +
                 ", userId='" + userId + '\'' +
                 ", hotelId='" + hotelId + '\'' +
                 ", roomId='" + roomId + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endDate='" + endDate + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
                 ", price=" + price +
                 ", guests='" + guests + '\'' +
                 ", phones='" + phones + '\'' +
-                ", arriveTime='" + arriveTime + '\'' +
+                ", arriveTime=" + arriveTime +
                 ", roomNum=" + roomNum +
                 ", payStatus=" + payStatus +
                 ", payWay='" + payWay + '\'' +
+                ", created='" + created + '\'' +
                 '}';
     }
 }
